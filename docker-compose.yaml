@@ -11,14 +11,12 @@ services:
       PGADMIN_DEFAULT_PASSWORD: secret
     ports:
       - "5432:5432"
-  pgadmin4:
-    image: dpage/pgadmin4
-    container_name: pgadmin
+  adminer:
+    image: adminer
     restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: reoptima@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: secret
     ports:
-      - "8080:80"
+      - "8080:8080"
+    depends_on:
+      - postgres15
 volumes:
   db-data:

@@ -1,10 +1,10 @@
 version: "2"
 sql:
   - engine: "postgresql"
-    queries: "./db/query/"
-    schema: "./db/migration/"
+    queries: "./query/"
+    schema: "./migration/"
     gen:
       go:
-        package: "sqlc"
+        package: "db"
         emit_json_tags: true
         out: "sqlc"
