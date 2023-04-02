@@ -1,4 +1,4 @@
-.PHONY: createdb dropdb migrateup migratedown sqlc
+.PHONY: createdb dropdb migrateup migratedown sqlc test, server
 
 createdb:
 	docker exec -it postgres15 createdb --username=Reoptima --owner=Reoptima simple_app
@@ -17,3 +17,6 @@ test:
 	go test -v -cover ./...
 server:
 	go run main.go
+
+mock:
+	mockgen -package mockdb -destination db/mock/store.go awesomeProject/db/sqlc Store
