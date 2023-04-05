@@ -19,7 +19,7 @@ migratedown1:
 	migrate -path db/migration -database "postgresql://Reoptima:passwd@localhost:5432/simple_app?sslmode=disable" -verbose down 1
 
 sqlc:
-	docker run --rm -v "$(pwd):/src/" -w /src kjconroy/sqlc:1.17.0 /workspace/sqlc generate -c /src/db/sqlc.yaml
+	docker run --rm -v "$(pwd):/src/" -w /src kjconroy/sqlc:1.17.0 /workspace/sqlc generate
 test:
 	go test -v -cover ./...
 server:
