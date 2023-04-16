@@ -9,6 +9,17 @@ import (
 	"log"
 )
 
+//	@title			CRM API Server
+//	@version		1.3
+//	@description	API Сервер для совершения транзакций внутри CRM
+
+//	@host	localhost:8083
+//	@Base	path /
+
+//	@securityDefinitions.apikey	ApiKeyAuth
+//	@in							header
+//	@name						Authorization
+
 func main() {
 	config, err := util.LoadConfig(".")
 	if err != nil {

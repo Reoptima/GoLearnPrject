@@ -17,6 +17,16 @@ type transferRequest struct {
 	Currency      string `json:"currency" binding:"required,currency"`
 }
 
+// @Summary		совершение транзакции
+// @Tags			Транзакции
+// @Security		ApiKeyAuth
+// @Description	Совершение транзакции между счетами
+// @ID				transfer
+// @Accept			json
+// @Produce		json
+// @Param			ввод	body	transferRequest	true	"данные для совершения транзакции"
+// @Success		200		{integer}	integer			1
+// @Router			/transfers [post]
 func (server *Server) createTransfer(ctx *gin.Context) {
 	var req transferRequest
 	if err := ctx.ShouldBindJSON(&req); err != nil {
