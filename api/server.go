@@ -2,7 +2,6 @@ package api
 
 import (
 	db "awesomeProject/db/sqlc"
-	_ "awesomeProject/docs"
 	"awesomeProject/token"
 	"awesomeProject/util"
 	"fmt"

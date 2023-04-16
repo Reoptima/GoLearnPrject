@@ -3,6 +3,7 @@ package main
 import (
 	"awesomeProject/api"
 	db "awesomeProject/db/sqlc"
+	_ "awesomeProject/docs"
 	"awesomeProject/util"
 	"database/sql"
 	_ "github.com/lib/pq"
