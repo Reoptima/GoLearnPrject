@@ -1,0 +1,337 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API Сервер для совершения транзакций внутри CRM",
+        "title": "CRM API Server",
+        "contact": {},
+        "version": "1.3"
+    },
+    "host": "localhost:8083",
+    "paths": {
+        "/accounts": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Вывод списка всех счетов пользователя",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Пользователь"
+                ],
+                "summary": "Список счетов",
+                "operationId": "list-account",
+                "parameters": [
+                    {
+                        "minimum": 1,
+                        "type": "integer",
+                        "name": "page_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "maximum": 10,
+                        "minimum": 5,
+                        "type": "integer",
+                        "name": "page_size",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "создание счёта",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Пользователь"
+                ],
+                "summary": "Создание счёта",
+                "operationId": "create-account",
+                "parameters": [
+                    {
+                        "description": "данные для счёта",
+                        "name": "ввод",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.createAccountRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/tokens/renew_access": {
+            "post": {
+                "description": "обновление токена",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Пользователь"
+                ],
+                "summary": "Обновление токена",
+                "operationId": "renew-token",
+                "parameters": [
+                    {
+                        "description": "токен",
+                        "name": "ввод",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.renewAccessTokenRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/transfers": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Совершение транзакции между счетами",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Транзакции"
+                ],
+                "summary": "совершение транзакции",
+                "operationId": "transfer",
+                "parameters": [
+                    {
+                        "description": "данные для совершения транзакции",
+                        "name": "ввод",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.transferRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/users": {
+            "post": {
+                "description": "Создание аккаунта",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Пользователь"
+                ],
+                "summary": "регистрация",
+                "operationId": "create-user",
+                "parameters": [
+                    {
+                        "description": "данные для регистрации",
+                        "name": "ввод",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.createUserRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/login": {
+            "post": {
+                "description": "Авторизация",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Пользователь"
+                ],
+                "summary": "Авторизация",
+                "operationId": "login-user",
+                "parameters": [
+                    {
+                        "description": "данные для авторизации",
+                        "name": "ввод",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.loginUserRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "api.createAccountRequest": {
+            "type": "object",
+            "required": [
+                "currency"
+            ],
+            "properties": {
+                "currency": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.createUserRequest": {
+            "type": "object",
+            "required": [
+                "email",
+                "full_name",
+                "password",
+                "username"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "full_name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string",
+                    "minLength": 6
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.loginUserRequest": {
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ],
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "minLength": 6
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.renewAccessTokenRequest": {
+            "type": "object",
+            "required": [
+                "refresh_token"
+            ],
+            "properties": {
+                "refresh_token": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.transferRequest": {
+            "type": "object",
+            "required": [
+                "amount",
+                "currency",
+                "from_account_id",
+                "to_account_id"
+            ],
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "from_account_id": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "to_account_id": {
+                    "type": "integer",
+                    "minimum": 1
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "ApiKeyAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}

@@ -1,0 +1,222 @@
+definitions:
+  api.createAccountRequest:
+    properties:
+      currency:
+        type: string
+    required:
+    - currency
+    type: object
+  api.createUserRequest:
+    properties:
+      email:
+        type: string
+      full_name:
+        type: string
+      password:
+        minLength: 6
+        type: string
+      username:
+        type: string
+    required:
+    - email
+    - full_name
+    - password
+    - username
+    type: object
+  api.loginUserRequest:
+    properties:
+      password:
+        minLength: 6
+        type: string
+      username:
+        type: string
+    required:
+    - password
+    - username
+    type: object
+  api.renewAccessTokenRequest:
+    properties:
+      refresh_token:
+        type: string
+    required:
+    - refresh_token
+    type: object
+  api.transferRequest:
+    properties:
+      amount:
+        type: integer
+      currency:
+        type: string
+      from_account_id:
+        minimum: 1
+        type: integer
+      to_account_id:
+        minimum: 1
+        type: integer
+    required:
+    - amount
+    - currency
+    - from_account_id
+    - to_account_id
+    type: object
+host: localhost:8083
+info:
+  contact: {}
+  description: API Сервер для совершения транзакций внутри CRM
+  title: CRM API Server
+  version: "1.3"
+paths:
+  /accounts:
+    get:
+      consumes:
+      - application/json
+      description: Вывод списка всех счетов пользователя
+      operationId: list-account
+      parameters:
+      - in: query
+        minimum: 1
+        name: page_id
+        required: true
+        type: integer
+      - in: query
+        maximum: 10
+        minimum: 5
+        name: page_size
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+      security:
+      - ApiKeyAuth: []
+      summary: Список счетов
+      tags:
+      - Пользователь
+    post:
+      consumes:
+      - application/json
+      description: создание счёта
+      operationId: create-account
+      parameters:
+      - description: данные для счёта
+        in: body
+        name: ввод
+        required: true
+        schema:
+          $ref: '#/definitions/api.createAccountRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+      security:
+      - ApiKeyAuth: []
+      summary: Создание счёта
+      tags:
+      - Пользователь
+  /tokens/renew_access:
+    post:
+      consumes:
+      - application/json
+      description: обновление токена
+      operationId: renew-token
+      parameters:
+      - description: токен
+        in: body
+        name: ввод
+        required: true
+        schema:
+          $ref: '#/definitions/api.renewAccessTokenRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+      summary: Обновление токена
+      tags:
+      - Пользователь
+  /transfers:
+    post:
+      consumes:
+      - application/json
+      description: Совершение транзакции между счетами
+      operationId: transfer
+      parameters:
+      - description: данные для совершения транзакции
+        in: body
+        name: ввод
+        required: true
+        schema:
+          $ref: '#/definitions/api.transferRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+      security:
+      - ApiKeyAuth: []
+      summary: совершение транзакции
+      tags:
+      - Транзакции
+  /users:
+    post:
+      consumes:
+      - application/json
+      description: Создание аккаунта
+      operationId: create-user
+      parameters:
+      - description: данные для регистрации
+        in: body
+        name: ввод
+        required: true
+        schema:
+          $ref: '#/definitions/api.createUserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+      summary: регистрация
+      tags:
+      - Пользователь
+  /users/login:
+    post:
+      consumes:
+      - application/json
+      description: Авторизация
+      operationId: login-user
+      parameters:
+      - description: данные для авторизации
+        in: body
+        name: ввод
+        required: true
+        schema:
+          $ref: '#/definitions/api.loginUserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+      summary: Авторизация
+      tags:
+      - Пользователь
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
