@@ -1,14 +1,14 @@
 package api
 
 import (
-	mockdb "awesomeProject/db/mock"
-	db "awesomeProject/db/sqlc"
-	"awesomeProject/token"
-	"awesomeProject/util"
 	"bytes"
 	"database/sql"
 	"encoding/json"
 	"fmt"
+	mockdb "github.com/Reoptima/GoLearnPrject/db/mock"
+	db "github.com/Reoptima/GoLearnPrject/db/sqlc"
+	"github.com/Reoptima/GoLearnPrject/token"
+	"github.com/Reoptima/GoLearnPrject/util"
 	"github.com/gin-gonic/gin"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"

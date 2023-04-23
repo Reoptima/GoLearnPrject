@@ -1,8 +1,8 @@
 package api
 
 import (
-	db "awesomeProject/db/sqlc"
-	"awesomeProject/util"
+	db "github.com/Reoptima/GoLearnPrject/db/sqlc"
+	"github.com/Reoptima/GoLearnPrject/util"
 	"github.com/stretchr/testify/require"
 	"os"
 	"testing"

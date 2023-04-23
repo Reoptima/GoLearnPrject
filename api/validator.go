@@ -1,7 +1,7 @@
 package api
 
 import (
-	"awesomeProject/util"
+	"github.com/Reoptima/GoLearnPrject/util"
 	"github.com/go-playground/validator/v10"
 )
 

@@ -5,8 +5,8 @@
 package mockdb
 
 import (
-	db "awesomeProject/db/sqlc"
 	context "context"
+	db "github.com/Reoptima/GoLearnPrject/db/sqlc"
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"

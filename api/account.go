@@ -1,10 +1,10 @@
 package api
 
 import (
-	db "awesomeProject/db/sqlc"
-	"awesomeProject/token"
 	"database/sql"
 	"errors"
+	db "github.com/Reoptima/GoLearnPrject/db/sqlc"
+	"github.com/Reoptima/GoLearnPrject/token"
 	"github.com/gin-gonic/gin"
 	"github.com/lib/pq"
 	"net/http"

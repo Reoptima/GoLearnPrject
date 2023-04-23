@@ -1,10 +1,10 @@
 package api
 
 import (
-	db "awesomeProject/db/sqlc"
-	"awesomeProject/token"
-	"awesomeProject/util"
 	"fmt"
+	db "github.com/Reoptima/GoLearnPrject/db/sqlc"
+	"github.com/Reoptima/GoLearnPrject/token"
+	"github.com/Reoptima/GoLearnPrject/util"
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/validator/v10"

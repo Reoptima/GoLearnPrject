@@ -1,9 +1,9 @@
 package api
 
 import (
-	"awesomeProject/token"
 	"errors"
 	"fmt"
+	"github.com/Reoptima/GoLearnPrject/token"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"

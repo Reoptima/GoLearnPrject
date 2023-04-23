@@ -1,8 +1,8 @@
 package api
 
 import (
-	"awesomeProject/token"
 	"fmt"
+	"github.com/Reoptima/GoLearnPrject/token"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/require"
 	"net/http"

@@ -1,8 +1,8 @@
 package db
 
 import (
-	"awesomeProject/util"
 	"context"
+	"github.com/Reoptima/GoLearnPrject/util"
 	"testing"
 	"time"
 

@@ -1,7 +1,7 @@
 package token
 
 import (
-	"awesomeProject/util"
+	"github.com/Reoptima/GoLearnPrject/util"
 	"github.com/stretchr/testify/require"
 	"testing"
 	"time"

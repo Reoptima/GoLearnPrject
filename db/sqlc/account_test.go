@@ -1,9 +1,9 @@
 package db
 
 import (
-	"awesomeProject/util"
 	"context"
 	"database/sql"
+	"github.com/Reoptima/GoLearnPrject/util"
 	"github.com/stretchr/testify/require"
 	"testing"
 	"time"

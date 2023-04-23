@@ -1,11 +1,11 @@
 package main
 
 import (
-	"awesomeProject/api"
-	db "awesomeProject/db/sqlc"
-	_ "awesomeProject/docs"
-	"awesomeProject/util"
 	"database/sql"
+	"github.com/Reoptima/GoLearnPrject/api"
+	db "github.com/Reoptima/GoLearnPrject/db/sqlc"
+	_ "github.com/Reoptima/GoLearnPrject/docs"
+	"github.com/Reoptima/GoLearnPrject/util"
 	_ "github.com/lib/pq"
 	"log"
 )

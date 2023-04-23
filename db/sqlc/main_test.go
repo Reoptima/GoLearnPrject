@@ -1,8 +1,8 @@
 package db
 
 import (
-	"awesomeProject/util"
 	"database/sql"
+	"github.com/Reoptima/GoLearnPrject/util"
 	_ "github.com/lib/pq"
 	"log"
 	"os"

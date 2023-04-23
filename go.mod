@@ -1,4 +1,4 @@
-module awesomeProject
+module github.com/Reoptima/GoLearnPrject
 
 go 1.20
 
@@ -11,7 +11,6 @@ require (
 	github.com/o1egl/paseto v1.0.0
 	github.com/spf13/viper v1.15.0
 	github.com/stretchr/testify v1.8.2
-	github.com/swaggo/echo-swagger v1.4.0
 	github.com/swaggo/files v1.0.1
 	github.com/swaggo/gin-swagger v1.6.0
 	github.com/swaggo/swag v1.8.12
