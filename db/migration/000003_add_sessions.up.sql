@@ -12,3 +12,10 @@ CREATE TABLE "sessions"
 
 ALTER TABLE "sessions"
     ADD FOREIGN KEY ("username") REFERENCES "users" ("username");
+
+CREATE TABLE "news"
+(
+    "id"            bigserial PRIMARY KEY,
+    "text"          varchar NOT NULL,
+    "created_at"    timestamptz not null default (now())
+)

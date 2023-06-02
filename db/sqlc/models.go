@@ -26,6 +26,12 @@ type Entry struct {
 	CreatedAt time.Time `json:"created_at"`
 }
 
+type News struct {
+	ID        int64     `json:"id"`
+	Text      string    `json:"text"`
+	CreatedAt time.Time `json:"created_at"`
+}
+
 type Session struct {
 	ID           uuid.UUID `json:"id"`
 	Username     string    `json:"username"`

@@ -63,6 +63,7 @@ func (server *Server) setupRouter() {
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	router.POST("/users", server.createUser)
+	router.POST("/news", server.createNews)
 	router.POST("/users/login", server.loginUser)
 	router.POST("/tokens/renew_access", server.renewAccessToken)
 	authRoutes := router.Group("/").Use(authMiddleware(server.tokenMaker))
@@ -70,6 +71,8 @@ func (server *Server) setupRouter() {
 	authRoutes.DELETE("/accounts", server.deleteAccount)
 	authRoutes.GET("/accounts/:id", server.getAccount)
 	authRoutes.GET("/accounts", server.listAccounts)
+	authRoutes.GET("/news", server.listNews)
+	authRoutes.GET("/news/:id", server.getNews)
 
 	authRoutes.POST("/transfers", server.createTransfer)
 
